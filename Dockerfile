@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -o Dpkg::Options::=--force-confdef -y \
 #配置apache
 RUN a2enmod rewrite
 
+COPY sites-enabled/* /etc/apache2/sites-enabled/
+
 # apache 日志
 RUN ln -sf /dev/stdout /var/log/apache2/access.log
 RUN ln -sf /dev/stderr /var/log/apache2/error.log
@@ -24,4 +26,4 @@ EXPOSE 80 443 22
 
 WORKDIR /opt/htdocs
 
-CMD ["/usr/bin/supervisord"]
+CMD /usr/bin/supervisord -nc /etc/supervisor/supervisord.conf
