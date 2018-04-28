@@ -19,6 +19,8 @@ RUN ln -sf /dev/stderr /var/log/apache2/error.log
 # 安装supervisor工具
 RUN mkdir -p /var/log/supervisor
 
+ADD supervisord.conf    /etc/supervisor/supervisord.conf
+
 RUN usermod -u 1000 www-data
 RUN groupmod -g 1000 www-data
 
