@@ -24,7 +24,7 @@ ADD supervisord.conf    /etc/supervisor/supervisord.conf
 RUN usermod -u 1000 www-data
 RUN groupmod -g 1000 www-data
 
-EXPOSE 80 443 22
+EXPOSE 80
 
 WORKDIR /opt/htdocs
 
